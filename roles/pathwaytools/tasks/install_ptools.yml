@@ -77,17 +77,17 @@
 
   - debug: msg="{{ ptools.stdout }}"
 
-  # Remove web-accounts.sql into pathwaytools/aic-export/mysql/ folder
+  # Remove web-accounts.sql file from pathwaytools/aic-export/mysql/ folder
   - name: Remove old web-accounts.sql files foo
     file: path="{{ mysql_schema }}/web-accounts.sql" state=absent
 
-  # Download web-accounts.sql into pathwaytools/aic-export/mysql/ folder
+  # Download web-accounts.sql file to pathwaytools/aic-export/mysql/ folder
   - name: Download MYSQL web schema file for Pathway Tools
     get_url: url="{{ ptools_mysql_schema_webfile }}" dest="{{ mysql_schema }}/web-accounts.sql"
     become: yes
     become_user: ubuntu
 
-  # Remove ptools-init.dat file pathwaytools/ptools-local folder
+  # Remove ptools-init.dat file from pathwaytools/ptools-local folder
   - name: Remove old pathway tools configuration files
     file: path="{{ ptools_conf_home }}/ptools-init.dat" state=absent
 
